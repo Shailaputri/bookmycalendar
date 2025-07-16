@@ -13,8 +13,11 @@ EMAIL_REGEX = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
 import os
 
 # Dynamically build the correct path
-img_path = os.path.join("static", "gpay_qr.png")
+# img_path = os.path.join("static", "gpay_qr.png")
 # GPAY_QR_CODE = st.image(img_path, width=200)
+# Absolute path to the current file's directory
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+img_path = os.path.join(BASE_DIR, "static", "gpay_qr.png")
 
 from PIL import Image
 
