@@ -35,9 +35,9 @@ def get_calendar_service():
                     "redirect_uris": ["http://localhost"]
                 }
             }
-
             flow = InstalledAppFlow.from_client_config(client_config, SCOPES)
-            creds = flow.run_local_server(port=0)
+            creds = flow.run_console()
+
 
         # Save the token for reuse
         with open(token_path, 'wb') as token:
