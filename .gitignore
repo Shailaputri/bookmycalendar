@@ -1,0 +1,10 @@
+credentials_palette.json
+credentials.json
+credentials_ria.json
+token.pkl
+.cache
+__pycache__/
+*.pyc
+.env
+.DS_Store
+app_v0.py
