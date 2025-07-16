@@ -16,6 +16,9 @@ import os
 img_path = os.path.join("static", "gpay_qr.png")
 # GPAY_QR_CODE = st.image(img_path, width=200)
 
+from PIL import Image
+
+
 def validate_email(email):
     """Validate email format using regex"""
     return re.match(EMAIL_REGEX, email) is not None
@@ -105,10 +108,11 @@ def main():
         st.subheader("Complete Payment (₹500)")
         
         col1, col2 = st.columns(2)
-        with col1:
-            st.image(img_path, width=200)
-            st.write(f"Reference: {st.session_state.user_data['reference_id']}")
 
+        img = Image.open(img_path)  # ✅ This avoids Streamlit's internal file path issues
+        with col1:
+            st.image(img, width=200, caption="Scan to Pay via GPay")
+            st.write(f"Reference: {st.session_state.user_data['reference_id']}")
         with col2:
             with st.form("payment_form"):
                 transaction_id = st.text_input("Transaction ID (starts with 'GPT')", 

@@ -9,4 +9,5 @@ pdfkit
 pillow
 wkhtmltopdf
 xhtml2pdf
+PIL
 weasyprint
