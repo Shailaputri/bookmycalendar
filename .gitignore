@@ -12,3 +12,7 @@ venv/
 .streamlit/
 calendar_utils_v0.py
 google_auth_v0.py
+google_auth_v1.py
+google_auth_v2.py
+export_token_to_secrets.py
+generated_token_for_secrets.txt
