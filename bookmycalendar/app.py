@@ -10,7 +10,11 @@ from calendar_utils import get_available_slots, create_appointment
 # Constants
 TIMEZONE = 'Asia/Kolkata'
 EMAIL_REGEX = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-GPAY_QR_CODE = "gpay_qr.png"
+import os
+
+# Dynamically build the correct path
+img_path = os.path.join("static", "gpay_qr.png")
+# GPAY_QR_CODE = st.image(img_path, width=200)
 
 def validate_email(email):
     """Validate email format using regex"""
@@ -102,7 +106,7 @@ def main():
         
         col1, col2 = st.columns(2)
         with col1:
-            st.image(GPAY_QR_CODE, width=200)
+            st.image(img_path, width=200)
             st.write(f"Reference: {st.session_state.user_data['reference_id']}")
 
         with col2:
