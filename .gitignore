@@ -8,3 +8,4 @@ __pycache__/
 .env
 .DS_Store
 app_v0.py
+venv/
