@@ -1,6 +1,9 @@
 from datetime import datetime, timedelta
 import pytz
-from google_auth import TIMEZONE
+import streamlit as st
+
+# Get TIMEZONE from Streamlit secrets (fallback to default)
+TIMEZONE = st.secrets.get("timezone", "Asia/Kolkata")
 
 def get_available_slots(service, date):
     """Get available 30-minute slots between 10:00 and 17:00 for given date"""
@@ -51,6 +54,9 @@ def create_appointment(service, start_time, name, email):
     end_time = start_time + timedelta(minutes=30)
     tz = pytz.timezone(TIMEZONE)
     
+    # Get admin email from secrets (fallback to default)
+    admin_email = st.secrets.get("admin_email", "pooja@aipalette.com")
+    
     event = {
         'summary': f'Appointment with {name}',
         'description': f'Appointment booked by {name} ({email})',
@@ -64,7 +70,7 @@ def create_appointment(service, start_time, name, email):
         },
         'attendees': [
             {'email': email},
-            {'email': "pooja@aipalette.com"},
+            {'email': admin_email},
         ],
         'reminders': {
             'useDefault': True,
@@ -74,5 +80,5 @@ def create_appointment(service, start_time, name, email):
     return service.events().insert(
         calendarId='primary',
         body=event,
-        sendUpdates="all" 
+        sendUpdates="all"
     ).execute()
