@@ -55,7 +55,7 @@ def create_appointment(service, start_time, name, email):
     tz = pytz.timezone(TIMEZONE)
     
     # Get admin email from secrets (fallback to default)
-    admin_email = st.secrets.get("admin_email", "pooja@aipalette.com")
+    admin_email = st.secrets.get("admin_email", "mail.pooja29.s@gmail.com")
     
     event = {
         'summary': f'Appointment with {name}',
